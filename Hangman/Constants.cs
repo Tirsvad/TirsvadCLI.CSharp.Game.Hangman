@@ -14,6 +14,8 @@
             { "en", new Dictionary<string, string>
                 {
                     { "MSG_WELCOME", "Welcome to Hangman!" },
+                    { "MSG_TITLE" , "HANGMAN" },
+                    { "MSG_GUESS_A_WORD", "Guess a word" },
                     { "MSG_ENTER_CHOICE", "Please enter your choice: " },
                     { "MSG_ENTER_NAME", "Please enter your name: " },
                     { "MSG_WIN", "Congratulations! You won!" },
@@ -28,6 +30,8 @@
             { "da", new Dictionary<string, string>
                 {
                     { "MSG_WELCOME", "Velkommen til Hangman!" },
+                    { "MSG_TITLE" , "HANGMAN" },
+                    { "MSG_GUESS_A_WORD", "Gæt et ord" },
                     { "MSG_ENTER_CHOICE", "Indtast dit valg: " },
                     { "MSG_ENTER_NAME", "Indtast dit navn: " },
                     { "MSG_WIN", "Tillykke! Du vandt!" },
@@ -110,54 +114,54 @@
         #region Hangman ASCII art
         public static readonly string[] HANGMAN_ASCII = new string[]
         {
-            "  +---+",
-            "  |   |",
-            "      |",
-            "      |",
-            "      |",
-            "      |",
+            "  +---+\n" +
+            "  |   |\n" +
+            "      |\n" +
+            "      |\n" +
+            "      |\n" +
+            "      |\n" +
             "=========",
-            "  +---+",
-            "  |   |",
-            "  O   |",
-            "      |",
-            "      |",
-            "      |",
+            "  +---+\n" +
+            "  |   |\n" +
+            "  O   |\n" +
+            "      |\n" +
+            "      |\n" +
+            "      |\n" +
             "=========",
-            "  +---+",
-            "  |   |",
-            "  O   |",
-            "  |   |",
-            "      |",
-            "      |",
+            "  +---+\n" +
+            "  |   |\n" +
+            "  O   |\n" +
+            "  |   |\n" +
+            "      |\n" +
+            "      |\n" +
             "=========",
-            "  +---+",
-            "  |   |",
-            "  O   |",
-            " /|   |",
-            "      |",
-            "      |",
+            "  +---+\n" +
+            "  |   |\n" +
+            "  O   |\n" +
+            " /|   |\n" +
+            "      |\n" +
+            "      |\n" +
             "=========",
-             "  +---+",
-             "  |   |",
-             "  O   |",
-            @" /|\  |",
-             "      |",
-             "      |",
+             "  +---+\n" +
+             "  |   |\n" +
+             "  O   |\n" +
+             " /|\\  |\n" +
+             "      |\n" +
+             "      |\n" +
              "=========",
-             "  +---+",
-             "  |   |",
-             "  O   |",
-            @" /|\  |",
-             " /    |",
-             "      |",
+             "  +---+\n" +
+             "  |   |\n" +
+             "  O   |\n" +
+             " /|\\  |\n" +
+             " /    |\n" +
+             "      |\n" +
              "=========",
-             "  +---+",
-             "  |   |",
-             "  O   |",
-            @" /|\  |",
-            @" / \  |",
-             "      |",
+             "  +---+\n" +
+             "  |   |\n" +
+             "  O   |\n" +
+             " /|\\  |\n" +
+             " / \\  |\n" +
+             "      |\n" +
              "========="
         };
         #endregion
