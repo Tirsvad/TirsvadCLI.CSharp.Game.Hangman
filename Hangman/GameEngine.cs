@@ -8,6 +8,7 @@
         string wordToGuess;
         bool normalGame = false;
         bool gameRunning = true;
+        int lives = Constants.MAX_TRIES;
 
         public GameEngine() { }
 
@@ -30,7 +31,15 @@
             do
             {
                 Console.Clear();
+                Program.ShowMessage("MSG_TITLE");
+                Console.WriteLine();
+                Program.ShowMessage("MSG_GUESS_A_WORD");
+                Console.WriteLine();
+
                 //Console.WriteLine(word);
+                Console.WriteLine(Constants.HANGMAN_ASCII[Constants.MAX_TRIES - lives]);
+
+                Console.WriteLine();
                 Console.WriteLine(wordToGuess);
 
                 // Check if the word is guessed
@@ -72,7 +81,31 @@
                     {
                         Console.WriteLine();
                         Console.WriteLine("Wrong guess");
-                        //TODO implement drawing
+                        lives--;
+                        Console.WriteLine("Lives: " + lives);
+                        if (lives == 0)
+                        {
+                            Console.Clear();
+                            Program.ShowMessage("MSG_TITLE");
+                            Console.WriteLine("\n\n");
+                            Console.WriteLine(Constants.HANGMAN_ASCII[Constants.MAX_TRIES - lives]);
+                            Console.WriteLine();
+                            Program.ShowMessage("MSG_LOSE");
+                            Console.WriteLine(word);
+                            Program.ShowMessage("MSG_PRESS_A_KEY");
+                            Program.ShowMessage("MSG_PRESS_ESC_FOR_MENU");
+                            ConsoleKeyInfo continueGame = Console.ReadKey();
+                            lives = Constants.MAX_TRIES;
+                            if (continueGame.Key == ConsoleKey.Escape)
+                            {
+                                word = string.Empty;
+                                return;
+                            }
+                            else
+                            {
+                                SetWordToGuess();
+                            }
+                        }
                     }
 
                 }
