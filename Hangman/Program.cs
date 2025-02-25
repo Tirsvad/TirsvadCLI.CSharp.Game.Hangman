@@ -12,15 +12,15 @@ namespace Hangman
         {
             new CultureInfo("en"),
             new CultureInfo("da"),
-            new CultureInfo("de"),
-            new CultureInfo("es"),
-            new CultureInfo("fr"),
-            new CultureInfo("it"),
-            new CultureInfo("nl"),
-            new CultureInfo("pl"),
-            new CultureInfo("pt"),
-            new CultureInfo("ru"),
-            new CultureInfo("sv"),
+            //new CultureInfo("de"),
+            //new CultureInfo("es"),
+            //new CultureInfo("fr"),
+            //new CultureInfo("it"),
+            //new CultureInfo("nl"),
+            //new CultureInfo("pl"),
+            //new CultureInfo("pt"),
+            //new CultureInfo("ru"),
+            //new CultureInfo("sv"),
         };
 
         static CultureInfo? cultureInfo;
