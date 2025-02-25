@@ -6,7 +6,7 @@ namespace Hangman
     internal class Program
     {
         // Create a new game engine
-        static GameEngine? gameEngine; //!> This is a new instance of the GameEngine class
+        static GameEngine gameEngine = new GameEngine(); //!> This is a new instance of the GameEngine class
 
         static CultureInfo[] Languages = new CultureInfo[]
         {
@@ -82,8 +82,6 @@ namespace Hangman
             // Menu loop
             while (true)
             {
-                int elementCounter = 0;
-
                 Console.Clear();
                 ShowMessage("MSG_WELCOME");
                 Console.WriteLine();
@@ -103,7 +101,7 @@ namespace Hangman
                 switch (choice.Key)
                 {
                     case ConsoleKey.F1:
-                        //gameEngine.StartGame();
+                        gameEngine.StartGame();
                         break;
                     case ConsoleKey.F2:
                         //gameEngine.ShowHighScores();
