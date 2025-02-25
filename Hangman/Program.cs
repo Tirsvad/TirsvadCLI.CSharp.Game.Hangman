@@ -11,7 +11,16 @@ namespace Hangman
         static CultureInfo[] Languages = new CultureInfo[]
         {
             new CultureInfo("en"),
-            new CultureInfo("da")
+            new CultureInfo("da"),
+            //new CultureInfo("de"),
+            //new CultureInfo("es"),
+            //new CultureInfo("fr"),
+            //new CultureInfo("it"),
+            //new CultureInfo("nl"),
+            //new CultureInfo("pl"),
+            //new CultureInfo("pt"),
+            //new CultureInfo("ru"),
+            //new CultureInfo("sv"),
         };
 
         static CultureInfo? cultureInfo;
@@ -68,68 +77,58 @@ namespace Hangman
             File.WriteAllText(settingsFilePath, json);
         }
 
-        private static void MenuLanguagesSelect()
-        {
-            int i = 1;
-            foreach (CultureInfo Language in Languages)
-            {
-                Console.WriteLine(i + " " + Language.EnglishName);
-                i++;
-            }
-
-            Console.WriteLine();
-            Console.ReadLine();
-        }
-
         internal static void Menu()
         {
             // Menu loop
             while (true)
             {
+                int elementCounter = 0;
+
                 Console.Clear();
                 ShowMessage("MSG_WELCOME");
                 Console.WriteLine();
                 // Show the main menu
-                foreach (var item in Constants.MENU_MAIN[cultureNameTwoLetter])
-                {
-                    Console.WriteLine(item);
-                }
+
+                ShowMenuItem("F1", "MAIN_MENU_START_GAME");
+                ShowMenuItem("F2", "MAIN_MENU_HIGH_SCCORE");
+                ShowMenuItem("F3", "MAIN_MENU_SEETINGS");
+                ShowMenuItem("F9", "HELP");
+                ShowMenuItem("ESC", "EXIT");
+
                 Console.WriteLine();
                 ShowMessage("MSG_ENTER_CHOICE", false);
                 //    // Get the user's choice
                 ConsoleKeyInfo choice = Console.ReadKey();
                 // Check the user's choice
-                switch (choice.KeyChar)
+                switch (choice.Key)
                 {
-                    case '1':
+                    case ConsoleKey.F1:
                         //gameEngine.StartGame();
                         break;
-                    case '2':
+                    case ConsoleKey.F2:
                         //gameEngine.ShowHighScores();
                         break;
-                    case '3':
-                        //gameEngine.MenuSettings();
+                    case ConsoleKey.F3:
+                        MenuSettings();
                         break;
-                    case '9':
+                    case ConsoleKey.F9:
                         Console.Clear();
-                        //Console.WriteLine(Constants.MSG_WELCOME);
+                        ShowMessage("MSG_WELCOME");
                         foreach (var item in Constants.MSG_HELP[cultureNameTwoLetter])
                         {
                             Console.WriteLine(item);
                         }
                         Console.WriteLine();
-                        //Console.WriteLine(Constants.MSG_PRESS_ANY_KEY);
+                        ShowMessage("MSG_PRESS_ANY_KEY");
                         Console.ReadKey();
                         break;
-                    case '0':
+                    case ConsoleKey.Escape:
                         //gameEngine.ExitGame();
                         return;
                     default:
                         Console.WriteLine("\n");
                         ShowErrorMessage("ERR_INVALID_INPUT");
                         ShowMessage("MSG_PRESS_ANY_KEY");
-                        //Console.WriteLine(Constants.ERR_INVALID_INPUT);
-                        //Console.WriteLine(Constants.MSG_PRESS_ANY_KEY);
                         Console.ReadKey();
                         break;
                 }
@@ -141,7 +140,132 @@ namespace Hangman
             while (true)
             {
                 Console.Clear();
+
+                // Show the settings menu
+                ShowMessage("MSG_MENU_SETTINGS");
+                Console.WriteLine();
+
+                ShowMenuItem("F1", "SETTINGS_MENU_CHANGE_LAMGUAGE");
+                ShowMenuItem("F2", "SETTINGS_MENU_NORMAL_GAME");
+                ShowMenuItem("F3", "SETTINGS_MENU_SPECIAL_AP_COMPUTER_SCIENCE_EDITION");
+                ShowMenuItem("F10", "BACK");
+                Console.WriteLine();
+
+                ShowMessage("MSG_ENTER_CHOICE", false);
+
+                // Get the user's choice
+                ConsoleKeyInfo choice = Console.ReadKey();
+                // Check the user's choice
+                switch (choice.Key)
+                {
+                    case ConsoleKey.F1:
+                        MenuLanguagesSelect();
+                        break;
+                    case ConsoleKey.F2:
+                        //NormalGame();
+                        break;
+                    case ConsoleKey.F3:
+                        //ComputerScienceGame();
+                        break;
+                    case ConsoleKey.F10:
+                        return;
+                    default:
+                        Console.WriteLine("\n");
+                        ShowErrorMessage("ERR_INVALID_INPUT");
+                        ShowMessage("MSG_PRESS_ANY_KEY");
+                        Console.ReadKey();
+                        break;
+                }
+
             }
+        }
+
+        internal static void MenuLanguagesSelect()
+        {
+            int elementCounter = 0; //!< This is the element counter
+            int i; //!< This is the i counter
+            string errorMessage = string.Empty; //!< This is for the error message
+
+            do
+            {
+                Console.Clear();
+
+                // Show the settings menu
+                if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    ShowErrorMessage(errorMessage);
+                    errorMessage = string.Empty;
+                }
+
+                // Show the language selection menu
+                for (i = 1 + elementCounter; i < Languages.Length + 1; i++)
+                {
+                    if (i > elementCounter + 10)
+                    {
+                        break;
+                    }
+
+                    int ii = i - 1;
+
+                    string option = $"F{(i - elementCounter)}";
+                    Console.WriteLine($"{option} {Languages[ii].EnglishName}");
+                }
+
+                Console.WriteLine();
+
+                // Show the navigation options
+                if (elementCounter > 0)
+                {
+                    Console.WriteLine("F11: Previous page");
+                }
+                else if (i - 1 + elementCounter < Languages.Length)
+                {
+                    Console.WriteLine("F12: Next page");
+                }
+
+                Console.WriteLine();
+
+                ShowMessage("MSG_ENTER_CHOICE", false);
+                ConsoleKeyInfo choice = Console.ReadKey();
+
+                // Check the user's choice
+                if (choice.Key >= ConsoleKey.F1 && choice.Key <= ConsoleKey.F10)
+                {
+                    int selectedIndex = elementCounter + (choice.Key - ConsoleKey.F1);
+                    if (selectedIndex < Languages.Length)
+                    {
+                        cultureInfo = Languages[selectedIndex];
+                        cultureNameTwoLetter = cultureInfo.TwoLetterISOLanguageName;
+                        SaveSettings();
+                        return;
+                    }
+
+                    errorMessage = "ERR_INVALID_INPUT";
+                }
+                else
+                {
+                    switch (choice.Key)
+                    {
+                        case ConsoleKey.F11:
+                            if (elementCounter > 0)
+                            {
+                                elementCounter -= 10;
+                            }
+                            break;
+                        case ConsoleKey.F12:
+                            if (elementCounter + 10 < Languages.Length)
+                            {
+                                elementCounter += 10;
+                            }
+                            break;
+                        case ConsoleKey.Escape:
+                            return;
+                        default:
+                            errorMessage = "ERR_INVALID_INPUT";
+                            break;
+                    }
+                }
+            } while (true);
         }
 
         internal static void ShowMessage(string message, bool newLine = true)
@@ -153,10 +277,16 @@ namespace Hangman
             }
         }
 
+        internal static void ShowMenuItem(string key, string message)
+        {
+            Console.WriteLine($"{key.PadRight(6)} {Constants.MENU_MESSAGES[key: cultureNameTwoLetter][message]}");
+        }
+
         internal static void ShowErrorMessage(string message, bool newLine = true)
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write(Constants.ERROR_MESSAGES[key: cultureNameTwoLetter][message]);
+            string msg = Constants.ERROR_MESSAGES[key: cultureNameTwoLetter][message];
+            Console.Write(msg);
             if (newLine)
             {
                 Console.WriteLine();
