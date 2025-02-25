@@ -20,6 +20,7 @@
                     { "MSG_LOSE", "You lost! The word was: " },
                     { "MSG_EXIT", "Thank you for playing.\nSee you soon again." },
                     { "MSG_PRESS_ANY_KEY", "Press any key to continue..." },
+                    { "MSG_MENU_SETTINGS", "Settings" },
                 }
             },
             { "da", new Dictionary<string, string>
@@ -31,28 +32,38 @@
                     { "MSG_LOSE", "Du tabte! Ordet var: " },
                     { "MSG_EXIT", "Tak for at spille.\nVi ses snart igen." },
                     { "MSG_PRESS_ANY_KEY", "Tryk på en vilkårlig tast for at fortsætte..." },
+                    { "MSG_MENU_SETTINGS", "Indstillinger" },
                 }
             }
         };
 
-        public static readonly Dictionary<string, string[]> MENU_MAIN = new Dictionary<string, string[]>
+
+        public static readonly Dictionary<string, Dictionary<string, string>> MENU_MESSAGES = new Dictionary<string, Dictionary<string, string>>
         {
-            { "en", new string[]
+            { "en", new Dictionary<string, string>
                 {
-                    "1. Start Game",
-                    "2. High Scores",
-                    "3. Settings",
-                    "9. Help",
-                    "0. Exit"
+                    { "MAIN_MENU_START_GAME", "Start Game" },
+                    { "MAIN_MENU_HIGH_SCCORE", "High Scores" },
+                    { "MAIN_MENU_SEETINGS", "Settings" },
+                    { "HELP", "Help" },
+                    { "EXIT", "Exit" },
+                    { "BACK", "Back" },
+                    { "SETTINGS_MENU_CHANGE_LAMGUAGE","Change language" },
+                    { "SETTINGS_MENU_NORMAL_GAME","Normal game" },
+                    { "SETTINGS_MENU_SPECIAL_AP_COMPUTER_SCIENCE_EDITION","Special AP computer science edition" },
                 }
             },
-            { "da", new string[]
+            { "da", new Dictionary<string, string>
                 {
-                    "1. Start spil",
-                    "2. Høje scorer",
-                    "3. Indstillinger",
-                    "9. Hjælp",
-                    "0. Afslut"
+                    { "MAIN_MENU_START_GAME", "Start spil" },
+                    { "MAIN_MENU_HIGH_SCCORE", "Høje scorer" },
+                    { "MAIN_MENU_SEETINGS", "Indstillinger" },
+                    { "HELP", "Hjælp" },
+                    { "EXIT", "Afslut" },
+                    { "BACK", "Tilbage" },
+                    { "SETTINGS_MENU_CHANGE_LAMGUAGE","Skift sprog" },
+                    { "SETTINGS_MENU_NORMAL_GAME","Normalt spil" },
+                    { "SETTINGS_MENU_SPECIAL_AP_COMPUTER_SCIENCE_EDITION","Speciel datamatiker udgave" },
                 }
             }
         };
