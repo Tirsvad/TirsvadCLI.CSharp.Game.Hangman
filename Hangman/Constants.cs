@@ -4,8 +4,8 @@
     {
         #region Configuration
         public const int MAX_TRIES = 6;
-        public const string WORDS_FILE = "words.txt";
-        public const string WORDS_FILE_COMPUTER_SCIENCE = "words_computer_science.txt";
+        public const string WORDS_FILE = "Data/words.txt";
+        public const string WORDS_FILE_COMPUTER_SCIENCE = "data/words_computer_science.txt";
         #endregion
 
         #region Messages
@@ -17,6 +17,8 @@
                     { "MSG_ENTER_CHOICE", "Please enter your choice: " },
                     { "MSG_ENTER_NAME", "Please enter your name: " },
                     { "MSG_WIN", "Congratulations! You won!" },
+                    { "MSG_PRESS_A_KEY", "Press a key for continue playing" },
+                    { "MSG_PRESS_ESC_FOR_MENU", "Press Escape for Menu"},
                     { "MSG_LOSE", "You lost! The word was: " },
                     { "MSG_EXIT", "Thank you for playing.\nSee you soon again." },
                     { "MSG_PRESS_ANY_KEY", "Press any key to continue..." },
@@ -29,6 +31,8 @@
                     { "MSG_ENTER_CHOICE", "Indtast dit valg: " },
                     { "MSG_ENTER_NAME", "Indtast dit navn: " },
                     { "MSG_WIN", "Tillykke! Du vandt!" },
+                    { "MSG_PRESS_A_KEY", "Tryk på en tast for at fortsætte" },
+                    { "MSG_PRESS_ESC_FOR_MENU", "Tryk Escape for Menu"},
                     { "MSG_LOSE", "Du tabte! Ordet var: " },
                     { "MSG_EXIT", "Tak for at spille.\nVi ses snart igen." },
                     { "MSG_PRESS_ANY_KEY", "Tryk på en vilkårlig tast for at fortsætte..." },
