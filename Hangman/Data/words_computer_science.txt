@@ -1,1 +1,63 @@
-﻿agile; some explanation
+﻿Agile; Able to add code change quickly and easily.
+Algorithm; A process or set of rules to be followed in calculations or other problem-solving operations, especially by a computer.
+API; Application Programming Interface.
+Applet; A small application program that runs on the web.
+Argument; A value that is passed to a function or procedure.
+Array; A data structure consisting of a collection of elements, each identified by at least one array index or key.
+ASCII; American Standard Code for Information Interchange.
+Assembly; A low-level programming language for a computer, or other programmable device.
+Attribute; A specification that defines a property of an object, element, or file.
+Binary; A number system that uses only two digits: 0 and 1.
+Boolean; A data type with only two possible values: true or false.
+Branch; A sequence of code that is conditionally executed.
+Byte; A unit of digital information that consists of eight bits.
+Cache; A hardware or software component that stores data so that future requests for that data can be served faster.
+Class; A blueprint for creating objects.
+Client; A computer program that requests services or resources from a server.
+Compiler; A program that translates source code into machine code.
+Constant; A value that cannot be altered by the program during normal execution.
+Constructor; A special type of subroutine called to create an object.
+Database; A collection of data that is organized so that it can be easily accessed, managed, and updated.
+Debugging; The process of finding and fixing errors in a computer program.
+Declaration; A statement that introduces an identifier and describes its type.
+Default; A value or setting that is automatically assigned or used when no alternative is specified.
+Delegate; A type that represents references to methods with a particular parameter list and return type.
+Destructor; A special method that is automatically called when an object is destroyed.
+Encapsulation; The bundling of data with the methods that operate on that data.
+Exception; An event that disrupts the normal flow of a program's instructions.
+Expression; A combination of variables, operators, and method calls that evaluates to a single value.
+Framework; A reusable set of libraries or classes for a software system.
+Function; A named section of a program that performs a specific task.
+GUI; Graphical User Interface.
+IDE; Integrated Development Environment.
+Inheritance; A mechanism in which a new class is created from an existing class.
+Instance; An object created from a class.
+Interface; A contract that specifies the methods that a class must implement.
+Interpreter; A program that directly executes instructions written in a programming or scripting language.
+Iteration; The repetition of a process in a computer program.
+Library; A collection of precompiled routines that a program can use.
+Loop; A sequence of instructions that is repeated until a certain condition is met.
+Method; A function that is associated with an object.
+Namespace; A way to organize code by grouping related classes and other types.
+Object; An instance of a class.
+Operator; A symbol that represents an operation to be performed.
+Overloading; Defining multiple methods with the same name but different parameters.
+Package; A namespace that organizes a set of related classes and interfaces.
+Pointer; A variable that stores the memory address of another variable.
+Polymorphism; The ability of an object to take on many forms.
+Primitive; A basic data type provided by a programming language.
+Property; A value associated with an object.
+Recursion; A programming technique in which a function calls itself.
+Reference; A value that refers to an object in memory.
+Runtime; The period during which a program is executing.
+Scope; The region of code where a variable can be accessed.
+Serialization; The process of converting an object into a format that can be stored or transmitted.
+Stack; A data structure that stores elements in a last-in, first-out order.
+Syntax; The rules that define the combinations of symbols that are considered to be correctly structured programs.
+Thread; A single sequence of execution within a program.
+Token; A single element of a programming language.
+Variable; A named storage location that can hold a value.
+Vector; A dynamic array that can grow or shrink in size.
+Virtual; A method that is declared in a base class and can be overridden in derived classes.
+Void; A data type that represents the absence of a value.
+XML; Extensible Markup Language.
