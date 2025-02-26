@@ -106,6 +106,7 @@ This is an example of how to list things you need to use the software and how to
 
 ## Folder Structure
 
+```bash
 CSharp.Game.Hangman/                # Root folder that contains the solution
 |---Hangman/                        # Project folder
 |   |---bin/                        # Contains the compiled files
@@ -113,7 +114,7 @@ CSharp.Game.Hangman/                # Root folder that contains the solution
 |---logo/                           # Contains logo
 |---documentation/                  # Contains documentation
 |   |---doxygen/                    # Contains doxygen documentation
-
+```
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/TirsvadCLI/CSharp.Game.Hangman?style=for-the-badge
