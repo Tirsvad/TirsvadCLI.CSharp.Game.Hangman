@@ -1,0 +1,52 @@
+[
+    {
+        "Language": "en",
+        "translations": {
+            "Menu": [
+                "Start a new game",
+                "High scores",
+                "Change settings",
+                "Help",
+                "Exit"
+            ],
+            "Settings": [
+                "Change language",
+                "Change game difficulty",
+                "Change game type",
+                "Back"
+            ],
+            "GameMode": [
+                "Normal"
+            ],
+            "GameType": [
+                "Word",
+                "AP Computer Science edition"
+            ]
+        }
+    },
+    {
+        "Language": "da",
+        "translations": {
+            "Menu": [
+                "Start et nyt spil",
+                "High scores",
+                "Ændre indstillinger",
+                "Hjælp",
+                "Afslut"
+            ],
+            "Settings": [
+                "Skift sprog",
+                "Skift spil sværhedsgrad",
+                "Skift spiltype",
+                "Tilbage"
+            ],
+            "GameMode": [
+                "Normal"
+            ],
+            "GameType": [
+                "Ord",
+                "Datamatiker udgave"
+            ]
+        }
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "Language": "en",
+        "translations": {
+            "ErrorInvalidKeyPart1": "Invalid key",
+            "ErrorInvalidKeyPart2": "Please use",
+            "ErrorInvalidKeyPart3": "to select an item, F11 to go back, or F12 to go forward",
+            "ErrorInvalidSelectionTryAgain": "Invalid selection. Please try again.",
+            "F11PageBack": "Press F11 to go back to the previous page",
+            "F12PageForward": "Press F12 to go forward to the next page",
+            "Greeting": "Welcome to Hangman Game!",
+            "LoadingSettings": "Loading settings",
+            "SavingSettings": "Saving settings",
+            "SettingsMenu": "Settings",
+            "LanguageMenu": "Choose language",
+            "YouWon": "You won!",
+            "YouLost": "You lost!",
+            "PlayAgain": "Play again?",
+            "Exit": "Exit",
+            "WordExplanation": "Word explanation",
+            "Score": "Score",
+            "CorrectGuess": "Correct guess!",
+            "CorrectWordIs": "The correct word is"
+        }
+    },
+    {
+        "Language": "da",
+        "translations": {
+            "ErrorInvalidKeyPart1": "Ugyldig tast",
+            "ErrorInvalidKeyPart2": "Brug venligst",
+            "ErrorInvalidKeyPart3": "for at vælge en genstand, F11 for at gå tilbage, eller F12 for at gå frem",
+            "ErrorInvalidSelectionTryAgain": "Ugyldigt valg. Prøv venligst igen.",
+            "F11PageBack": "Tryk F11 for at gå tilbage til den forrige side",
+            "F12PageForward": "Tryk F12 for at gå frem til den næste side",
+            "Greeting": "Velkommen til Hangman Spil!",
+            "LoadingSettings": "Indlæser indstillinger",
+            "SavingSettings": "Gemmer indstillinger",
+            "SettingsMenu": "Indstillinger",
+            "LanguageMenu": "Vælg sprog",
+            "YouWon": "Du vandt!",
+            "YouLost": "Du tabte!",
+            "PlayAgain": "Spil igen?",
+            "Exit": "Afslut",
+            "WordExplanation": "Ordforklaring",
+            "Score": "Score",
+            "CorrectGuess": "Korrekt gæt!",
+            "CorrectWordIs": "Det korrekte ord er"
+        }
+    }
+]

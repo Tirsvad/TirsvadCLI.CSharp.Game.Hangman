@@ -1,143 +1,151 @@
-﻿namespace Hangman
+﻿using HangmanLibrary.Logic;
+
+namespace Hangman
 {
     class GameEngine
     {
-        string[] words;
-        string word;
-        string wordExplanation;
-        string wordToGuess;
-        bool normalGame = false;
-        bool gameRunning = true;
-        int lives = Constants.MAX_TRIES;
+        private int Tries { get; set; } = 0;
+        private int Lives { get; set; } = Constants.MAX_TRIES;
 
-        public GameEngine() { }
+        private int Score { get; set; } = 0;
+        private string GameMode { get; set; } = "Normal";
+        private string GameType { get; set; } = "APCS";
 
-        internal string ExitGame()
+        private string Word { get; set; }
+        private string WordExplanation { get; set; }
+        private string WordToGuess { get; set; }
+
+        private string[] Words { get; set; }
+
+        private string Lang { get; set; } = "en"; //!< The language of the application is set to English by default
+        private IMessages Messages { get; set; }
+
+        public GameEngine(IMessages Messages, string language)
         {
-            //return Constants.MESSAGES["EXIT_GAME"];
-            return "";
+            Words = Array.Empty<string>();
+            Word = string.Empty;
+            WordExplanation = string.Empty;
+            WordToGuess = string.Empty;
+            this.Messages = Messages; // Initialize the Messages property
+            Lang = language; // Set the language of the game engine
         }
 
-        internal void ShowHighScores()
+        public void StartGame()
         {
-            throw new NotImplementedException();
-        }
-
-        internal void StartGame(bool normalGame = false)
-        {
-            SetWords();
+            Console.WriteLine("Starting game...");
+            LoadWords();
             SetWordToGuess();
-            this.normalGame = normalGame;
+
             do
             {
                 Console.Clear();
-                Program.ShowMessage("MSG_TITLE");
-                Console.WriteLine();
-                Program.ShowMessage("MSG_GUESS_A_WORD");
+                Console.WriteLine("Hangman");
                 Console.WriteLine();
 
-                //Console.WriteLine(word);
-                Console.WriteLine(Constants.HANGMAN_ASCII[Constants.MAX_TRIES - lives]);
+                Console.WriteLine(Constants.HANGMAN_ASCII[Constants.MAX_TRIES - Lives]);
 
                 Console.WriteLine();
-                Console.WriteLine(wordToGuess);
+                Console.WriteLine(WordToGuess);
 
                 // Check if the word is guessed
-                if (wordToGuess == word)
+                if (WordToGuess.ToLower() == Word.ToLower())
                 {
                     Console.WriteLine();
-                    Program.ShowMessage("MSG_WIN");
-                    Program.ShowMessage("MSG_PRESS_A_KEY");
-                    Program.ShowMessage("MSG_PRESS_ESC_FOR_MENU");
+                    Console.WriteLine(LookupMsgText("YouWon"));
+                    Console.WriteLine(LookupMsgText("WordExplanation: ") + WordExplanation);
+                    Console.WriteLine(LookupMsgText("Score: ") + Score);
+                    Console.WriteLine();
+                    Console.WriteLine(LookupMsgText("PlayAgain"));
+                    Console.WriteLine(LookupMsgText("Exit"));
+
                     ConsoleKeyInfo continueGame = Console.ReadKey();
                     if (continueGame.Key == ConsoleKey.Escape)
                     {
-                        word = string.Empty;
-                        return;
+                        Console.WriteLine(continueGame.ToString());
+                        break;
                     }
                     else
                     {
+                        Lives++;
                         SetWordToGuess();
+                        Lives = Constants.MAX_TRIES;
                     }
                 }
                 else
                 {
                     ConsoleKeyInfo guess = Console.ReadKey();
                     char guessedChar = char.ToLower(guess.KeyChar);
-
+                    string word = Word.ToLower();
                     if (word.Contains(guessedChar))
                     {
                         Console.WriteLine();
-                        Console.WriteLine("Correct guess");
-                        for (int i = 0; i < word.Length; i++)
+                        Console.WriteLine(LookupMsgText("CorrectGuess"));
+                        for (int i = 0; i < Word.Length; i++)
                         {
                             if (word[i] == guess.KeyChar)
                             {
-                                wordToGuess = wordToGuess.Remove(i, 1).Insert(i, guess.KeyChar.ToString());
+                                WordToGuess = WordToGuess.Remove(i, 1).Insert(i, guess.KeyChar.ToString());
                             }
                         }
                     }
                     else
                     {
-                        Console.WriteLine();
-                        Console.WriteLine("Wrong guess");
-                        lives--;
-                        Console.WriteLine("Lives: " + lives);
-                        if (lives == 0)
-                        {
-                            Console.Clear();
-                            Program.ShowMessage("MSG_TITLE");
-                            Console.WriteLine("\n\n");
-                            Console.WriteLine(Constants.HANGMAN_ASCII[Constants.MAX_TRIES - lives]);
-                            Console.WriteLine();
-                            Program.ShowMessage("MSG_LOSE");
-                            Console.WriteLine(word);
-                            Program.ShowMessage("MSG_PRESS_A_KEY");
-                            Program.ShowMessage("MSG_PRESS_ESC_FOR_MENU");
-                            ConsoleKeyInfo continueGame = Console.ReadKey();
-                            lives = Constants.MAX_TRIES;
-                            if (continueGame.Key == ConsoleKey.Escape)
-                            {
-                                word = string.Empty;
-                                return;
-                            }
-                            else
-                            {
-                                SetWordToGuess();
-                            }
-                        }
+                        Lives--;
                     }
-
                 }
-
-            } while (gameRunning);
+            } while (Lives > 0);
+            Console.WriteLine(LookupMsgText("YouLost"));
+            Console.WriteLine($"{LookupMsgText("CorrectWordIs")} {Word}");
+            Console.ReadKey();
+            ResetGame();
         }
 
-        internal void SetWords()
+        private void LoadWords()
         {
             string file;
-            if (normalGame)
-            {
-                file = Constants.WORDS_FILE;
-            }
-            else
+            if (GameType == "APCS")
             {
                 file = Constants.WORDS_FILE_COMPUTER_SCIENCE;
             }
-
-            words = System.IO.File.ReadAllLines(file);
+            else
+            {
+                file = Constants.WORDS_FILE;
+            }
+            Words = System.IO.File.ReadAllLines(file);
         }
 
-        internal void SetWordToGuess()
+        private void SetWordToGuess()
         {
             Random random = new Random();
-            word = words[random.Next(words.Length)];
-            if (!normalGame)
+            Word = Words[random.Next(Words.Length)];
+            if (GameType == "APCS")
             {
-                wordExplanation = word.Split(';')[1];
-                word = word.Split(';')[0];
+                WordExplanation = Word.Split(';')[1];
+                Word = Word.Split(';')[0];
             }
-            wordToGuess = new string('-', word.Length);
+            WordToGuess = new string('-', Word.Length);
+        }
+
+        public void ResetGame()
+        {
+            Lives = Constants.MAX_TRIES;
+            Score = 0;
+            SetWordToGuess();
+        }
+
+        public bool ChangeGameMode(string s)
+        {
+            if (Constants.GAME_MODE.Contains(s))
+            {
+                GameMode = s;
+                return true;
+            }
+            return false;
+        }
+
+        private string LookupMsgText(string msg)
+        {
+            return Messages.LookupMsgText(msg, Lang);
         }
     }
 }
